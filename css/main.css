@@ -97,14 +97,23 @@ header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
   margin: auto;
+  margin-left: -50px;
 }
 .recipeGrid .recipeCard {
-  max-width: 400px;
-  width: fit-content;
-  margin: auto;
+  width: calc(33.33% - 50px);
+  margin-left: 50px;
   padding: auto;
+}
+@media screen and (max-width: 1024px) {
+  .recipeGrid .recipeCard {
+    width: calc(50% - 50px);
+  }
+}
+@media screen and (max-width: 768px) {
+  .recipeGrid .recipeCard {
+    width: calc(100% - 50px);
+  }
 }
 .recipeGrid .recipeCard .recipeImg {
   background-color: #C7BEBE;
