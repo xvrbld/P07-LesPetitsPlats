@@ -1,0 +1,89 @@
+.recipeGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+
+    .recipeCard {
+        max-width: 400px;
+        width: fit-content;
+        margin: auto;
+        padding: auto;
+
+
+        .recipeImg {
+            background-color: #C7BEBE;
+            height: 100px;
+            border: solid 1px #C7BEBE;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .recipeContent {
+            background-color: #E7E7E7;
+            border: solid 1px #E7E7E7;
+            border-radius: 0 0 5px 5px;
+            height: auto;
+            margin-bottom: 50px;
+            padding: 10px 20px;
+
+            .recipeHeader {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                h2 {
+                    margin-top: 0;
+                }
+
+                .recipeTime {
+                    display: flex;
+                    flex-direction: row;
+
+                    h3 {
+                        margin-top: 0;
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            .recipeText {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .recipeIngredients {
+
+                    font-weight: 600;
+                    font-size: 12px;
+                    line-height: 14px;
+                    width: 50%;
+                    
+                    dt {
+                        float: left;
+                        clear: left;
+                        width: 50%;
+                    }
+              
+                    dt::after {
+                        content: ":";
+                    }
+              
+                    dd {
+                        padding: 0 0 2px 0;
+                        font-weight: 400;
+                    }
+                }
+
+                .recipeInstructions {
+                    font-family: $fontSecondary;
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 100%;
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
