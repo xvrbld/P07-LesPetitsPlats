@@ -2,18 +2,115 @@
     display: flex;
     flex-direction: row;
 
-    button {
-        padding: 20px;
-        font: inherit;
-        cursor: pointer;
-        outline: inherit;
-        margin: 15px 20px;
-        margin-left: 0;
-        color: white;
+    .dropdownClosed {
+        display: block;
     }
 
-    svg {
-        padding-left: 20px;
+    .dropdownOpen {
+        display: none;
+        position: absolute;
+        margin-top: 15px;
+        border: solid 1px $primary;
+        border-radius: 5px;
+        background-color: $primary;
+        width: 667px;
+        height: 397px;
+        margin-right: 20px;
+
+        svg {
+            cursor: pointer;
+        }
+
+        input {
+            padding: 20px;
+            width: 75%;
+            background-color: inherit;
+            border: none;
+            color: #FFFFFF;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 22px;
+
+            &::placeholder {
+                opacity: 0.5;
+                color: #FFFFFF;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 22px;
+            }
+
+            &:focus {
+                outline: none;
+                color: #FFFFFF;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 22px;
+            }
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100px;
+            max-width: 699px;
+            width: 699px;
+            list-style-type: none;
+            color: white;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 22px;
+            padding: 20px;
+            padding-top: 0;
+            margin: 0;
+
+            li {
+                text-align: left;
+                width: 33%;
+                margin-bottom: 10px;
+                &:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    button {
+        padding: 20px;
+        cursor: pointer;
+        margin: 15px 20px;
+        margin-left: 0;
+
+        input {
+            background-color: inherit;
+            border: none;
+
+            &::placeholder {
+                color: white;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 22px;
+            }
+
+            &:focus {
+                outline: none;
+                color: white;
+                font-weight: 500;
+                font-size: 16px;
+
+
+                &::placeholder {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        svg {
+            margin-left: 28px;
+        }
     }
 
     .buttonIngredients {

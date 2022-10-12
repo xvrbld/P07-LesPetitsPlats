@@ -59,23 +59,108 @@ header {
   margin-left: 15px;
   background-color: #3282F7;
   border: none;
+  cursor: pointer;
 }
 
 .dropdown {
   display: flex;
   flex-direction: row;
 }
+.dropdown .dropdownClosed {
+  display: block;
+}
+.dropdown .dropdownOpen {
+  display: none;
+  position: absolute;
+  margin-top: 15px;
+  border: solid 1px #3282F7;
+  border-radius: 5px;
+  background-color: #3282F7;
+  width: 667px;
+  height: 397px;
+  margin-right: 20px;
+}
+.dropdown .dropdownOpen svg {
+  cursor: pointer;
+}
+.dropdown .dropdownOpen input {
+  padding: 20px;
+  width: 75%;
+  background-color: inherit;
+  border: none;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.dropdown .dropdownOpen input::placeholder {
+  opacity: 0.5;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.dropdown .dropdownOpen input:focus {
+  outline: none;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.dropdown .dropdownOpen ul {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+  max-width: 699px;
+  width: 699px;
+  list-style-type: none;
+  color: white;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  padding: 20px;
+  padding-top: 0;
+  margin: 0;
+}
+.dropdown .dropdownOpen ul li {
+  text-align: left;
+  width: 33%;
+  margin-bottom: 10px;
+}
+.dropdown .dropdownOpen ul li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 .dropdown button {
   padding: 20px;
-  font: inherit;
   cursor: pointer;
-  outline: inherit;
   margin: 15px 20px;
   margin-left: 0;
-  color: white;
 }
-.dropdown svg {
-  padding-left: 20px;
+.dropdown button input {
+  background-color: inherit;
+  border: none;
+}
+.dropdown button input::placeholder {
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+.dropdown button input:focus {
+  outline: none;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+}
+.dropdown button input:focus::placeholder {
+  opacity: 0.5;
+}
+.dropdown button svg {
+  margin-left: 28px;
 }
 .dropdown .buttonIngredients {
   background-color: #3282F7;
@@ -117,7 +202,7 @@ header {
 }
 .recipeGrid .recipeCard .recipeImg {
   background-color: #C7BEBE;
-  height: 100px;
+  height: 178px;
   border: solid 1px #C7BEBE;
   border-radius: 5px 5px 0 0;
 }
@@ -125,7 +210,7 @@ header {
   background-color: #E7E7E7;
   border: solid 1px #E7E7E7;
   border-radius: 0 0 5px 5px;
-  height: auto;
+  height: 186px;
   margin-bottom: 50px;
   padding: 10px 20px;
 }
@@ -136,7 +221,13 @@ header {
   align-items: center;
 }
 .recipeGrid .recipeCard .recipeContent .recipeHeader h2 {
-  margin-top: 0;
+  margin: 0;
+  max-width: 280px;
+  height: 58px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .recipeGrid .recipeCard .recipeContent .recipeHeader .recipeTime {
   display: flex;
@@ -150,12 +241,15 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 100px;
+  overflow: auto;
 }
 .recipeGrid .recipeCard .recipeContent .recipeText .recipeIngredients {
   font-weight: 600;
   font-size: 12px;
   line-height: 14px;
   width: 50%;
+  margin-top: 10px;
 }
 .recipeGrid .recipeCard .recipeContent .recipeText .recipeIngredients dt {
   float: left;
@@ -170,10 +264,10 @@ header {
   font-weight: 400;
 }
 .recipeGrid .recipeCard .recipeContent .recipeText .recipeInstructions {
+  margin-top: 10px;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 12px;
-  line-height: 100%;
   width: 50%;
 }
 

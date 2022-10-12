@@ -37,7 +37,7 @@
         <div class="filters">
             <div class="activeFilter">
                 Coco
-                <button type="button" class="closeFilter">
+                <button type="button" class="closeFilter" onclick="closeFilter(this)">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
@@ -48,7 +48,7 @@
             </div>
             <div class="activeFilter">
                 Tomate
-                <button type="button" class="closeFilter">
+                <button type="button" class="closeFilter" onclick="closeFilter(this)">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
@@ -59,7 +59,7 @@
             </div>
             <div class="activeFilter">
                 Citron
-                <button type="button" class="closeFilter">
+                <button type="button" class="closeFilter" onclick="closeFilter(this)">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
@@ -71,27 +71,113 @@
         </div>
         </div>
         <div class="dropdown">
-            <div class="dropdownIngredients">
-                <button type="button" class="buttonIngredients">
-                    Ingrédients
-                    <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
-                            fill="white" />
-                    </svg>
-                </button>
+            <div class="dropdownClosed">
+                <div class="dropdownIngredients">
+                    <button type="button" class="buttonIngredients">
+                        <input type="text" placeholder="Ingrédients" size="10" />
+                        <svg class="arrowDown" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div class="dropdownAppliances">
-                <button type="button" class="buttonAppliances">
-                    Appareils
-                    <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
-                            fill="white" />
-                    </svg>
-                </button>
+            <div class="dropdownOpen">
+                <div class="dropdownIngredients">
+                        <input type="text" placeholder="Rechercher un ingrédient" />
+                        <svg class="arrowUp" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill="white"/>
+                            </svg>
+                        <ul>
+                            <li>Lait de coco</li>
+                            <li>Sucre</li>
+                            <li>Concombre</li>
+                            <li>Citron Vert</li>
+                            <li>Oignon</li>
+                            <li>Riz blanc</li>
+                            <li>Maïs</li>
+                            <li>Crème fraiche</li>
+                            <li>Pomme</li>
+                            <li>Chocolat au lait</li>
+                            <li>Jus de citron</li>
+                            <li>Glaçons</li>
+                            <li>Tomate</li>
+                            <li>Poulet</li>
+                            <li>Poivron rouge</li>
+                            <li>Thon en miettes</li>
+                            <li>Vinaigrette</li>
+                            <li>Gruyère râpé</li>
+                            <li>Oeuf</li>
+                            <li>Crème liquide</li>
+                            <li>Crème de coco</li>
+                            <li>Thon Rouge</li>
+                            <li>Carotte</li>
+                            <li>Coulis de tomate</li>
+                            <li>Huile d'olive</li>
+                            <li>Oeuf dur</li>
+                            <li>Pâte feuilletée</li>
+                            <li>Moutarde de Dijon</li>
+                            <li>Sucre en Poudre</li>
+                            <li>Beurre</li>
+                        </ul>
+                </div>
+            </div>
+            <div class="dropdownClosed">
+                <div class="dropdownAppliances">
+                    <button type="button" class="buttonAppliances">
+                        <input class="inputAppliances" type="text" placeholder="Appareils" size="10" />
+                        <svg class="arrowDown" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="dropdownOpen">
+                <div class="dropdownAppliances">
+                        <input type="text" placeholder="Rechercher un appareil" />
+                        <svg class="arrowUp" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill="white"/>
+                            </svg>
+                        <ul>
+                            <li>Lait de coco</li>
+                            <li>Sucre</li>
+                            <li>Concombre</li>
+                            <li>Citron Vert</li>
+                            <li>Oignon</li>
+                            <li>Riz blanc</li>
+                            <li>Maïs</li>
+                            <li>Crème fraiche</li>
+                            <li>Pomme</li>
+                            <li>Chocolat au lait</li>
+                            <li>Jus de citron</li>
+                            <li>Glaçons</li>
+                            <li>Tomate</li>
+                            <li>Poulet</li>
+                            <li>Poivron rouge</li>
+                            <li>Thon en miettes</li>
+                            <li>Vinaigrette</li>
+                            <li>Gruyère râpé</li>
+                            <li>Oeuf</li>
+                            <li>Crème liquide</li>
+                            <li>Crème de coco</li>
+                            <li>Thon Rouge</li>
+                            <li>Carotte</li>
+                            <li>Coulis de tomate</li>
+                            <li>Huile d'olive</li>
+                            <li>Oeuf dur</li>
+                            <li>Pâte feuilletée</li>
+                            <li>Moutarde de Dijon</li>
+                            <li>Sucre en Poudre</li>
+                            <li>Beurre</li>
+                        </ul>
+                </div>
             </div>
             <div class="dropdownUstensils">
                 <button type="button" class="buttonUstensils">
-                    Ustensiles
+                    <input type="text" placeholder="Ustensiles" size="10" />
                     <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
                             fill="white" />
@@ -99,256 +185,11 @@
                 </button>
             </div>
         </div>
-        <div class="recipeGrid">
-            <div class="recipeCard">
-                <div class="recipeImg"></div>
-                <div class="recipeContent">
-                    <div class="recipeHeader">
-                        <div class="recipeTitle">
-                            <h2>Limonade de Coco</h2>
-                        </div>
-                        <div class="recipeTime">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                                    fill="black" />
-                            </svg>
-                            <h3>10 min</h3>
-                        </div>
-                    </div>
-                    <div class="recipeText">
-                        <div class="recipeIngredients">
-                            <dl>
-                                <dt>Lait de coco</dt>
-                                <dd>400ml</dd>
-                                <dt>Jus de citron</dt>
-                                <dd>2</dd>
-                                <dt>Crème de coco</dt>
-                                <dd>4 cuillères</dd>
-                                <dt>Sucre</dt>
-                                <dd>20g</dd>
-                                <dt>Glaçons</dt>
-                                <dd>2</dd>
-                            </dl>
-                        </div>
-                        <div class="recipeInstructions">
-                            <p>Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
-                                jus de
-                                2
-                                citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="recipeCard">
-                <div class="recipeImg"></div>
-                <div class="recipeContent">
-                    <div class="recipeHeader">
-                        <div class="recipeTitle">
-                            <h2>Limonade de Coco</h2>
-                        </div>
-                        <div class="recipeTime">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                                    fill="black" />
-                            </svg>
-                            <h3>10 min</h3>
-                        </div>
-                    </div>
-                    <div class="recipeText">
-                        <div class="recipeIngredients">
-                            <dl>
-                                <dt>Lait de coco</dt>
-                                <dd>400ml</dd>
-                                <dt>Jus de citron</dt>
-                                <dd>2</dd>
-                                <dt>Crème de coco</dt>
-                                <dd>4 cuillères</dd>
-                                <dt>Sucre</dt>
-                                <dd>20g</dd>
-                                <dt>Glaçons</dt>
-                                <dd>2</dd>
-                            </dl>
-                        </div>
-                        <div class="recipeInstructions">
-                            <p>Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
-                                jus de
-                                2
-                                citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="recipeCard">
-                <div class="recipeImg"></div>
-                <div class="recipeContent">
-                    <div class="recipeHeader">
-                        <div class="recipeTitle">
-                            <h2>Limonade de Coco</h2>
-                        </div>
-                        <div class="recipeTime">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                                    fill="black" />
-                            </svg>
-                            <h3>10 min</h3>
-                        </div>
-                    </div>
-                    <div class="recipeText">
-                        <div class="recipeIngredients">
-                            <dl>
-                                <dt>Lait de coco</dt>
-                                <dd>400ml</dd>
-                                <dt>Jus de citron</dt>
-                                <dd>2</dd>
-                                <dt>Crème de coco</dt>
-                                <dd>4 cuillères</dd>
-                                <dt>Sucre</dt>
-                                <dd>20g</dd>
-                                <dt>Glaçons</dt>
-                                <dd>2</dd>
-                            </dl>
-                        </div>
-                        <div class="recipeInstructions">
-                            <p>Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
-                                jus de
-                                2
-                                citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="recipeCard">
-                <div class="recipeImg"></div>
-                <div class="recipeContent">
-                    <div class="recipeHeader">
-                        <div class="recipeTitle">
-                            <h2>Limonade de Coco</h2>
-                        </div>
-                        <div class="recipeTime">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                                    fill="black" />
-                            </svg>
-                            <h3>10 min</h3>
-                        </div>
-                    </div>
-                    <div class="recipeText">
-                        <div class="recipeIngredients">
-                            <dl>
-                                <dt>Lait de coco</dt>
-                                <dd>400ml</dd>
-                                <dt>Jus de citron</dt>
-                                <dd>2</dd>
-                                <dt>Crème de coco</dt>
-                                <dd>4 cuillères</dd>
-                                <dt>Sucre</dt>
-                                <dd>20g</dd>
-                                <dt>Glaçons</dt>
-                                <dd>2</dd>
-                            </dl>
-                        </div>
-                        <div class="recipeInstructions">
-                            <p>Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
-                                jus de
-                                2
-                                citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="recipeCard">
-                <div class="recipeImg"></div>
-                <div class="recipeContent">
-                    <div class="recipeHeader">
-                        <div class="recipeTitle">
-                            <h2>Limonade de Coco</h2>
-                        </div>
-                        <div class="recipeTime">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                                    fill="black" />
-                            </svg>
-                            <h3>10 min</h3>
-                        </div>
-                    </div>
-                    <div class="recipeText">
-                        <div class="recipeIngredients">
-                            <dl>
-                                <dt>Lait de coco</dt>
-                                <dd>400ml</dd>
-                                <dt>Jus de citron</dt>
-                                <dd>2</dd>
-                                <dt>Crème de coco</dt>
-                                <dd>4 cuillères</dd>
-                                <dt>Sucre</dt>
-                                <dd>20g</dd>
-                                <dt>Glaçons</dt>
-                                <dd>2</dd>
-                            </dl>
-                        </div>
-                        <div class="recipeInstructions">
-                            <p>Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
-                                jus de
-                                2
-                                citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="recipeCard">
-                <div class="recipeImg"></div>
-                <div class="recipeContent">
-                    <div class="recipeHeader">
-                        <div class="recipeTitle">
-                            <h2>Limonade de Coco</h2>
-                        </div>
-                        <div class="recipeTime">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                                    fill="black" />
-                            </svg>
-                            <h3>10 min</h3>
-                        </div>
-                    </div>
-                    <div class="recipeText">
-                        <div class="recipeIngredients">
-                            <dl>
-                                <dt>Lait de coco</dt>
-                                <dd>400ml</dd>
-                                <dt>Jus de citron</dt>
-                                <dd>2</dd>
-                                <dt>Crème de coco</dt>
-                                <dd>4 cuillères</dd>
-                                <dt>Sucre</dt>
-                                <dd>20g</dd>
-                                <dt>Glaçons</dt>
-                                <dd>2</dd>
-                            </dl>
-                        </div>
-                        <div class="recipeInstructions">
-                            <p>Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le
-                                jus de
-                                2
-                                citrons et le sucre. Mixer jusqu'à avoir la consistence désirée.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="recipeGrid"></div>
     </main>
     <footer></footer>
 </body>
+<script src="javascript/recipes.js"></script>
+<script src="javascript/index.js"></script>
 
 </html>
