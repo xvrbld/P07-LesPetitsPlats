@@ -52,35 +52,74 @@ function displayRecipes(recipes) {
     grid.innerHTML = recipesHTML;
 }
 
+function addTag(tag, type) {
+
+    const filters = document.querySelector(".filters");
+
+    const newTag = `<div class="activeFilter ${type}">
+    ${tag}
+    <button type="button" class="closeFilter" onclick="closeFilter(this)">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M12.59 6L10 8.59L7.41 6L6 7.41L8.59 10L6 12.59L7.41 14L10 11.41L12.59 14L14 12.59L11.41 10L14 7.41L12.59 6ZM10 0C4.47 0 0 4.47 0 10C0 15.53 4.47 20 10 20C15.53 20 20 15.53 20 10C20 4.47 15.53 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 5.59 5.59 2 10 2C14.41 2 18 5.59 18 10C18 14.41 14.41 18 10 18Z"
+                fill="white" />
+        </svg>
+    </button>
+
+</div>`
+
+filters.innerHTML = filters.innerHTML + newTag;
+}
+
 // Remplir les dropdowns avec les datas du json
 function fillDropdowns(recipes) {
+
+    // Remplir ingrédients / ustensiles / appareils
     recipes.map(recipe => {
-        /*const dropdown = document.querySelector(".dropdownOpen");
-        dropdown.innerHTML = "";
-        let allingredientsHTML = "";*/
         recipe.ingredients.map(ingredient => {
-            allIngredients.push(ingredient.ingredient)
-
-            /*const ingredientsHTML = `<div class="dropdownIngredients">
-            <input type="text" placeholder="Rechercher un ingrédient" />
-            <svg class="arrowUp" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill="white"/>
-                </svg>
-            <ul>
-                <li>${allIngredients}</li>
-            </ul>
-    </div>`;
-    allingredientsHTML = ingredientsHTML;*/
-
+            allIngredients.push(ingredient.ingredient.toLowerCase())
         })
         recipe.ustensils.map(ustensil => {
-            allUstensils.push(ustensil)
+            allUstensils.push(ustensil.toLowerCase())
         })
+        allAppliances.push(recipe.appliance.toLowerCase())
 
-        
     })
 
-    /*dropdown.innerHTML = allingredientsHTML + ingredientsHTML;*/
+    // Supprimer les doublons
+    allIngredients = [...new Set(allIngredients)];
+    allUstensils = [...new Set(allUstensils)];
+    allAppliances = [...new Set(allAppliances)];
+
+    // Remplir les dropdowns
+
+    const listIngredients = document.querySelector(".allIngredients");
+    let allIngredientsHTML = "";
+    allIngredients.map(ingredient => {
+        allIngredientsHTML = allIngredientsHTML + `<li onclick="addTag('${ingredient}', 'ingredient')">${ingredient}</li>`
+
+    })
+
+    listIngredients.innerHTML = allIngredientsHTML;
+
+    const listAppliances = document.querySelector(".allAppliances");
+    let allAppliancesHTML = "";
+    allAppliances.map(appliance => {
+        allAppliancesHTML = allAppliancesHTML + `<li onclick="addTag('${appliance}', 'appliance')">${appliance}</li>`
+
+    })
+
+    listAppliances.innerHTML = allAppliancesHTML;
+
+    const listUstensils = document.querySelector(".allUstensils");
+    let allUstensilsHTML = "";
+    allUstensils.map(ustensil => {
+        allUstensilsHTML = allUstensilsHTML + `<li onclick="addTag('${ustensil}', 'ustensil')">${ustensil}</li>`
+
+    })
+
+    listUstensils.innerHTML = allUstensilsHTML;
+
 
     console.log(allIngredients);
     console.log(allUstensils);
@@ -93,30 +132,25 @@ function init() {
     fillDropdowns(recipes);
 }
 
-document.querySelector(".arrowDown").addEventListener("click", openDropdown);
-document.querySelector(".arrowUp").addEventListener("click", closeDropdown);
+function openDropdown(type) {
 
-/*document.querySelectorAll('.arrowDown').forEach(el => {
-    el.addEventListener('click', () => {
-        console.log(el);
-    });
-});*/
+    if (type == "ingredients") {
+        document.querySelector(".dropdownOpenIngredients").style.display = "block";
+    }
 
-/*document.querySelectorAll('.arrowDown').forEach(el => {
-    el.addEventListener('click', (openDropdown) => {
-        openDropdown.target.style.display = "block";
-        console.log(openDropdown);
-    });
-});*/
+    if (type == "appliances") {
+        document.querySelector(".dropdownOpenAppliances").style.display = "block";
+    }
 
-function openDropdown() {
-    document.querySelector(".dropdownOpen").style.display = "block";
-    document.querySelector(".dropdownClosed").style.display = "none";
+    if (type == "ustensils") {
+        document.querySelector(".dropdownOpenUstensils").style.display = "block";
+    }
 }
 
 function closeDropdown() {
-    document.querySelector(".dropdownOpen").style.display = "none";
-    document.querySelector(".dropdownClosed").style.display = "block";
+    document.querySelectorAll(".dropdownOpen").forEach(dropdown => {
+        dropdown.style.display = "none";
+    })
 }
 
 // Supprime les filtres un à un

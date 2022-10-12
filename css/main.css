@@ -79,6 +79,7 @@ header {
   width: 667px;
   height: 397px;
   margin-right: 20px;
+  overflow-y: auto;
 }
 .dropdown .dropdownOpen svg {
   cursor: pointer;
