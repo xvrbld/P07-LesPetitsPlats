@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,7 +7,6 @@
     <link rel="stylesheet" href="css/main.css" />
     <title>Les Petits Plats</title>
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -41,7 +39,8 @@
                 <div class="dropdownIngredients">
                     <button type="button" class="buttonIngredients">
                         <input type="text" placeholder="Ingrédients" size="10" />
-                        <svg class="arrowDown" onclick="openDropdown('ingredients')" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="arrowDown" onclick="openDropdown('ingredients')" width="16" height="11"
+                            viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
                                 fill="white" />
@@ -51,18 +50,23 @@
             </div>
             <div class="dropdownOpen dropdownOpenIngredients">
                 <div class="dropdownIngredients">
-                        <input type="text" placeholder="Rechercher un ingrédient" />
-                        <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill="white"/>
-                            </svg>
-                        <ul class="allIngredients"></ul>
+                    <input class="inputIngredients" type="text" placeholder="Rechercher un ingrédient" />
+                    <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
+                            fill="white" />
+                    </svg>
+                    <ul class="allIngredients"></ul>
+                    <ul class="autocompleteResults"></ul>
                 </div>
             </div>
             <div class="dropdownClosed">
                 <div class="dropdownAppliances">
                     <button type="button" class="buttonAppliances">
                         <input class="inputAppliances" type="text" placeholder="Appareils" size="10" />
-                        <svg class="arrowDown" onclick="openDropdown('appliances')" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="arrowDown" onclick="openDropdown('appliances')" width="16" height="11"
+                            viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
                                 fill="white" />
@@ -72,18 +76,22 @@
             </div>
             <div class="dropdownOpen dropdownOpenAppliances">
                 <div class="dropdownAppliances">
-                        <input type="text" placeholder="Rechercher un appareil" />
-                        <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill="white"/>
-                            </svg>
-                        <ul class="allAppliances"></ul>
+                    <input type="text" placeholder="Rechercher un appareil" />
+                    <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
+                            fill="white" />
+                    </svg>
+                    <ul class="allAppliances"></ul>
                 </div>
             </div>
             <div class="dropdownClosed">
                 <div class="dropdownUstensils">
                     <button type="button" class="buttonUstensils">
                         <input class="inputUstensils" type="text" placeholder="Ustensiles" size="10" />
-                        <svg class="arrowDown" onclick="openDropdown('ustensils')" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="arrowDown" onclick="openDropdown('ustensils')" width="16" height="11"
+                            viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
                                 fill="white" />
@@ -93,11 +101,14 @@
             </div>
             <div class="dropdownOpen dropdownOpenUstensils">
                 <div class="dropdownUstensils">
-                        <input type="text" placeholder="Rechercher un ustensile" />
-                        <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill="white"/>
-                            </svg>
-                        <ul class="allUstensils"></ul>
+                    <input type="text" placeholder="Rechercher un ustensile" />
+                    <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
+                            fill="white" />
+                    </svg>
+                    <ul class="allUstensils"></ul>
                 </div>
             </div>
         </div>

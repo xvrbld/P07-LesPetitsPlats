@@ -11,8 +11,13 @@ function displayRecipes(recipes) {
         let ingredientHTML = "";
         recipe.ingredients.map(ingredient => {
             let unit = "";
+            let quantity = "";
             if (ingredient.unit) {
                 unit = ingredient.unit;
+            }
+
+            if (ingredient.quantity) {
+                quantity = ingredient.quantity;
             }
 
             ingredientHTML = ingredientHTML + `<dt>${ingredient.ingredient}</dt>
@@ -68,7 +73,7 @@ function addTag(tag, type) {
 
 </div>`
 
-filters.innerHTML = filters.innerHTML + newTag;
+    filters.innerHTML = filters.innerHTML + newTag;
 }
 
 // Remplir les dropdowns avec les datas du json
@@ -83,7 +88,6 @@ function fillDropdowns(recipes) {
             allUstensils.push(ustensil.toLowerCase())
         })
         allAppliances.push(recipe.appliance.toLowerCase())
-
     })
 
     // Supprimer les doublons
@@ -92,12 +96,10 @@ function fillDropdowns(recipes) {
     allAppliances = [...new Set(allAppliances)];
 
     // Remplir les dropdowns
-
     const listIngredients = document.querySelector(".allIngredients");
     let allIngredientsHTML = "";
     allIngredients.map(ingredient => {
         allIngredientsHTML = allIngredientsHTML + `<li onclick="addTag('${ingredient}', 'ingredient')">${ingredient}</li>`
-
     })
 
     listIngredients.innerHTML = allIngredientsHTML;
@@ -106,7 +108,6 @@ function fillDropdowns(recipes) {
     let allAppliancesHTML = "";
     allAppliances.map(appliance => {
         allAppliancesHTML = allAppliancesHTML + `<li onclick="addTag('${appliance}', 'appliance')">${appliance}</li>`
-
     })
 
     listAppliances.innerHTML = allAppliancesHTML;
@@ -115,15 +116,9 @@ function fillDropdowns(recipes) {
     let allUstensilsHTML = "";
     allUstensils.map(ustensil => {
         allUstensilsHTML = allUstensilsHTML + `<li onclick="addTag('${ustensil}', 'ustensil')">${ustensil}</li>`
-
     })
 
     listUstensils.innerHTML = allUstensilsHTML;
-
-
-    console.log(allIngredients);
-    console.log(allUstensils);
-    console.log(allAppliances);
 }
 
 // Initialise les fonctions de remplissage
@@ -156,6 +151,49 @@ function closeDropdown() {
 // Supprime les filtres un à un
 function closeFilter(el) {
     el.parentNode.remove();
+}
+
+
+// Autocomplete
+// variables
+var input = document.querySelector('.inputIngredients');
+var results;
+
+// functions
+function autocomplete(val) {
+  var allIngredientsReturn = [];
+
+  for (i = 0; i < allIngredients.length; i++) {
+    if (val === allIngredients[i].slice(0, val.length)) {
+        allIngredientsReturn.push(allIngredients[i]);
+    }
+  }
+
+  return allIngredientsReturn;
+}
+
+// events
+input.onkeyup = function(e) {
+  inputVal = this.value; // updates the variable on each ocurrence
+
+  if (inputVal.length > 0) {
+    var allIngredientsToShow = [];
+
+    autocompleteResults = document.querySelector(".autocompleteResults");
+    autocompleteResults.innerHTML = '';
+    allIngredientsToShow = autocomplete(inputVal);
+    
+    for (i = 0; i < allIngredientsToShow.length; i++) {
+        autocompleteResults.innerHTML += '<li>' + allIngredientsToShow[i] + '</li>';
+
+    }
+    autocompleteResults.style.display = 'block';
+    document.querySelector(".allIngredients").style.display = "none";
+  } else {
+    allIngredientsToShow = [];
+    autocompleteResults.innerHTML = '';
+    document.querySelector(".allIngredients").style.display = "block";
+  }
 }
 
 init();

@@ -76,11 +76,16 @@
                     line-height: 14px;
                     width: 50%;
                     margin-top: 10px;
+                    display: flex;
+
 
                     dt {
                         float: left;
                         clear: left;
                         width: 50%;
+                        padding: 5px 5px 5px 0;
+                        
+                        
                     }
 
                     dt::after {
@@ -88,8 +93,10 @@
                     }
 
                     dd {
-                        padding: 0 0 2px 0;
+                        width: 33%;
                         font-weight: 400;
+                        display: flex;
+                        padding: 5px 0 5px 0;
                     }
                 }
 

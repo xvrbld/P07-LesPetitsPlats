@@ -43,7 +43,6 @@ header {
 .filters .activeFilter {
   display: flex;
   justify-content: center;
-  background-color: #3282F7;
   margin: 10px;
   margin-left: 0;
   color: white;
@@ -57,14 +56,28 @@ header {
 .filters .activeFilter .closeFilter {
   margin-top: -2px;
   margin-left: 15px;
-  background-color: #3282F7;
+  background-color: inherit;
   border: none;
   cursor: pointer;
+}
+.filters .ingredient {
+  background-color: #3282F7;
+}
+.filters .appliance {
+  background-color: #68D9A4;
+}
+.filters .ustensil {
+  background-color: #ED6454;
 }
 
 .dropdown {
   display: flex;
   flex-direction: row;
+}
+@media screen and (max-width: 700px) {
+  .dropdown {
+    flex-direction: column;
+  }
 }
 .dropdown .dropdownClosed {
   display: block;
@@ -73,13 +86,19 @@ header {
   display: none;
   position: absolute;
   margin-top: 15px;
-  border: solid 1px #3282F7;
   border-radius: 5px;
-  background-color: #3282F7;
+  border: solid 1px inherit;
   width: 667px;
   height: 397px;
   margin-right: 20px;
-  overflow-y: auto;
+  overflow: auto;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 700px) {
+  .dropdown .dropdownOpen {
+    margin-right: 20px;
+    width: fit-content;
+  }
 }
 .dropdown .dropdownOpen svg {
   cursor: pointer;
@@ -115,8 +134,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   height: 100px;
-  max-width: 699px;
-  width: 699px;
+  width: 100%;
   list-style-type: none;
   color: white;
   font-weight: 400;
@@ -131,6 +149,12 @@ header {
   width: 33%;
   margin-bottom: 10px;
 }
+@media screen and (max-width: 700px) {
+  .dropdown .dropdownOpen ul li {
+    width: 50%;
+    margin-right: 0px;
+  }
+}
 .dropdown .dropdownOpen ul li:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -140,6 +164,13 @@ header {
   cursor: pointer;
   margin: 15px 20px;
   margin-left: 0;
+}
+@media screen and (max-width: 700px) {
+  .dropdown button {
+    margin-top: 0;
+    width: 100%;
+    padding: auto;
+  }
 }
 .dropdown button input {
   background-color: inherit;
@@ -177,6 +208,28 @@ header {
   background-color: #ED6454;
   border: solid 1px #ED6454;
   border-radius: 5px;
+}
+.dropdown .dropdownOpenIngredients {
+  background-color: #3282F7;
+}
+.dropdown .dropdownOpenAppliances {
+  background-color: #68D9A4;
+}
+.dropdown .dropdownOpenUstensils {
+  background-color: #ED6454;
+}
+.dropdown .autocompleteResults {
+  display: none;
+  width: 100%;
+  margin-top: -2px;
+  color: #3282F7;
+}
+.dropdown .autocompleteResults li {
+  width: 100%;
+  padding: 20px 15px;
+  border-right: #3282F7;
+  border-bottom: #3282F7;
+  border-left: #3282F7;
 }
 
 .recipeGrid {
@@ -251,18 +304,22 @@ header {
   line-height: 14px;
   width: 50%;
   margin-top: 10px;
+  display: flex;
 }
 .recipeGrid .recipeCard .recipeContent .recipeText .recipeIngredients dt {
   float: left;
   clear: left;
   width: 50%;
+  padding: 5px 5px 5px 0;
 }
 .recipeGrid .recipeCard .recipeContent .recipeText .recipeIngredients dt::after {
   content: ":";
 }
 .recipeGrid .recipeCard .recipeContent .recipeText .recipeIngredients dd {
-  padding: 0 0 2px 0;
+  width: 33%;
   font-weight: 400;
+  display: flex;
+  padding: 5px 0 5px 0;
 }
 .recipeGrid .recipeCard .recipeContent .recipeText .recipeInstructions {
   margin-top: 10px;
