@@ -21,7 +21,7 @@ function displayRecipes(recipes) {
             }
 
             ingredientHTML = ingredientHTML + `<dt>${ingredient.ingredient}</dt>
-        <dd>${ingredient.quantity} ${unit}</dd>`;
+        <dd>${quantity} ${unit}</dd>`;
         })
         const recipeHTML = `<div class="recipeCard">
         <div class="recipeImg"></div>
@@ -60,6 +60,20 @@ function displayRecipes(recipes) {
 function addTag(tag, type) {
 
     const filters = document.querySelector(".filters");
+    const filtersSelected = document.querySelectorAll(".activeFilter");
+
+    let alreadySelected = false;
+
+    filtersSelected.forEach(filter => {
+        if (filter.innerText == tag) {
+            alreadySelected = true;
+        }
+    });
+
+    if (alreadySelected) {
+        alert('Déjà ajouté');
+        return false;
+    }
 
     const newTag = `<div class="activeFilter ${type}">
     ${tag}
@@ -153,47 +167,66 @@ function closeFilter(el) {
     el.parentNode.remove();
 }
 
-
 // Autocomplete
-// variables
-var input = document.querySelector('.inputIngredients');
-var results;
+function autoComplete(search, type) {
+    let arrayToFilter = null;
 
-// functions
-function autocomplete(val) {
-  var allIngredientsReturn = [];
-
-  for (i = 0; i < allIngredients.length; i++) {
-    if (val === allIngredients[i].slice(0, val.length)) {
-        allIngredientsReturn.push(allIngredients[i]);
+    if (type == 'ingredient') {
+        arrayToFilter = allIngredients
     }
-  }
 
-  return allIngredientsReturn;
+    if (type == 'ustensil') {
+        arrayToFilter = allUstensils
+    }
+
+    if (type == 'appliance') {
+        arrayToFilter = allAppliances
+    }
+
+    return arrayToFilter.filter((value) => {
+        const valueLowerCase = value.toLowerCase()
+        const searchLowerCase = search.toLowerCase()
+
+        return valueLowerCase.includes(searchLowerCase)
+    })
 }
 
-// events
-input.onkeyup = function(e) {
-  inputVal = this.value; // updates the variable on each ocurrence
 
-  if (inputVal.length > 0) {
-    var allIngredientsToShow = [];
+const inputAutocomplete = document.querySelectorAll('.inputAutocomplete')
 
-    autocompleteResults = document.querySelector(".autocompleteResults");
-    autocompleteResults.innerHTML = '';
-    allIngredientsToShow = autocomplete(inputVal);
-    
-    for (i = 0; i < allIngredientsToShow.length; i++) {
-        autocompleteResults.innerHTML += '<li>' + allIngredientsToShow[i] + '</li>';
+inputAutocomplete.forEach(el => {
+    el.addEventListener('input', ({
+        target
+    }) => {
+        const value = target.value;
+        const type = target.dataset.type;
+        const results = target.dataset.results;
+        const clear = target.dataset.clear;
+        if (value.length > 0) {
+            if (clear == 'external') {
+                document.querySelector(`.${results}`).style.display = 'block';
+            }
 
-    }
-    autocompleteResults.style.display = 'block';
-    document.querySelector(".allIngredients").style.display = "none";
-  } else {
-    allIngredientsToShow = [];
-    autocompleteResults.innerHTML = '';
-    document.querySelector(".allIngredients").style.display = "block";
-  }
-}
+            const autocompleteResults = autoComplete(value, type);
+            let resultsHtml = "";
+            autocompleteResults.map(result => {
+                resultsHtml = resultsHtml + `<li onclick="addTag('${result}', '${type}')">${result}</li>`
+            })
+
+            document.querySelector(`.${results}`).innerHTML = resultsHtml;
+            
+
+        } else {
+            if (clear == 'external') {
+                document.querySelector(`.${results}`).style.display = 'none';
+                
+            }
+
+            if (clear == 'internal') {
+                fillDropdowns(recipes);
+            }
+        }
+    });
+});
 
 init();
