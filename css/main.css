@@ -28,6 +28,9 @@ header {
   font-size: 16px;
   line-height: 22px;
 }
+.searchbar .inputSearchbar:focus {
+  outline: none;
+}
 .searchbar .buttonSearchbar {
   background-color: #E7E7E7;
   border: solid 1px #E7E7E7;
@@ -39,16 +42,20 @@ header {
 .filters {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: auto;
 }
 .filters .activeFilter {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 10px;
   margin-left: 0;
   color: white;
   border-radius: 5px;
   padding: 13px 10px 10px 10px;
-  width: 100px;
+  width: auto;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
@@ -74,7 +81,7 @@ header {
   display: flex;
   flex-direction: row;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 980px) {
   .dropdown {
     flex-direction: column;
   }
@@ -84,7 +91,6 @@ header {
 }
 .dropdown .dropdownOpen {
   display: none;
-  position: absolute;
   margin-top: 15px;
   border-radius: 5px;
   border: solid 1px inherit;
@@ -93,10 +99,16 @@ header {
   margin-right: 20px;
   overflow: auto;
   overflow-x: hidden;
+  z-index: 1;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1210px) {
   .dropdown .dropdownOpen {
-    margin-right: 20px;
+    width: 500px;
+  }
+}
+@media screen and (max-width: 980px) {
+  .dropdown .dropdownOpen {
+    margin-right: 0;
     width: fit-content;
   }
 }
@@ -149,7 +161,7 @@ header {
   width: 33%;
   margin-bottom: 10px;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1210px) {
   .dropdown .dropdownOpen ul li {
     width: 50%;
     margin-right: 0px;
@@ -165,7 +177,7 @@ header {
   margin: 15px 20px;
   margin-left: 0;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 980px) {
   .dropdown button {
     margin-top: 0;
     width: 100%;
@@ -175,6 +187,9 @@ header {
 .dropdown button input {
   background-color: inherit;
   border: none;
+  color: white;
+  font-size: 16px;
+  line-height: 22px;
 }
 .dropdown button input::placeholder {
   color: white;
@@ -218,18 +233,126 @@ header {
 .dropdown .dropdownOpenUstensils {
   background-color: #ED6454;
 }
-.dropdown .autocompleteResults {
-  display: none;
-  width: 100%;
-  margin-top: -2px;
-  color: #3282F7;
+.dropdown .autocompleteIngredients {
+  position: absolute;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 175px;
+  width: 209px;
+  background-color: #3282F7;
+  top: 70%;
+  color: #FFFFFF;
+  border-radius: 5px;
+  z-index: 2;
 }
-.dropdown .autocompleteResults li {
-  width: 100%;
-  padding: 20px 15px;
-  border-right: #3282F7;
-  border-bottom: #3282F7;
-  border-left: #3282F7;
+@media screen and (max-width: 980px) {
+  .dropdown .autocompleteIngredients {
+    width: 100%;
+  }
+}
+.dropdown .autocompleteIngredients li {
+  list-style-type: none;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  margin-left: 23px;
+}
+.dropdown .autocompleteIngredients li:hover {
+  text-decoration: underline;
+}
+.dropdown .autocompleteAppliances {
+  position: absolute;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 175px;
+  width: 208px;
+  background-color: #68D9A4;
+  top: 70%;
+  left: 0;
+  color: #FFFFFF;
+  border-radius: 5px;
+  z-index: 2;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .autocompleteAppliances {
+    width: 100%;
+  }
+}
+.dropdown .autocompleteAppliances li {
+  list-style-type: none;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  margin-left: 23px;
+}
+.dropdown .autocompleteAppliances li:hover {
+  text-decoration: underline;
+}
+.dropdown .autocompleteUstensils {
+  position: absolute;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 175px;
+  width: 209px;
+  background-color: #ED6454;
+  top: 70%;
+  color: #FFFFFF;
+  border-radius: 5px;
+  z-index: 2;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .autocompleteUstensils {
+    width: 100%;
+  }
+}
+.dropdown .autocompleteUstensils li {
+  list-style-type: none;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  margin-left: 23px;
+}
+.dropdown .autocompleteUstensils li:hover {
+  text-decoration: underline;
+}
+.dropdown .dropdownIngredientsParent {
+  position: relative;
+}
+.dropdown .dropdownIngredientsParent .dropdownOpenIngredients {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .dropdownIngredientsParent .dropdownOpenIngredients {
+    width: 100%;
+  }
+}
+.dropdown .dropdownAppliancesParent {
+  position: relative;
+}
+.dropdown .dropdownAppliancesParent .dropdownOpenAppliances {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .dropdownAppliancesParent .dropdownOpenAppliances {
+    width: 100%;
+  }
+}
+.dropdown .dropdownUstensilsParent {
+  position: relative;
+}
+.dropdown .dropdownUstensilsParent .dropdownOpenUstensils {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .dropdownUstensilsParent .dropdownOpenUstensils {
+    width: 100%;
+  }
 }
 
 .recipeGrid {
@@ -327,6 +450,16 @@ header {
   font-weight: 400;
   font-size: 12px;
   width: 50%;
+}
+
+.noRecipes {
+  margin-top: 100px;
+  justify-content: center;
+  font-size: 36px;
+  color: #D04F4F;
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=main.css.map */

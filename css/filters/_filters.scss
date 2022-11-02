@@ -1,21 +1,23 @@
 .filters {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
 
     .activeFilter {
         display: flex;
         justify-content: center;
+        align-items: center;
         margin: 10px;
         margin-left: 0;
         color: white;
         border-radius: 5px;
         padding: 13px 10px 10px 10px;
-        width: 100px;
+        width: auto;
         font-weight: 500;
         font-size: 14px;
-        line-height: 17px;
-
-        
+        line-height: 17px;   
 
         .closeFilter {
             margin-top: -2px;

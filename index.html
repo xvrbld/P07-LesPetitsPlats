@@ -39,107 +39,114 @@
         <!--DROPDOWNS-->
         <div class="dropdown">
             <!--INGREDIENTS-->
-            <!--CLOSED-->
-            <div class="dropdownClosed">
-                <div class="dropdownIngredients">
-                    <button type="button" class="buttonIngredients">
-                        <input type="text" class="inputAutocomplete" data-type="ingredient"
-                            data-results="autocompleteIngredients" data-clear="external" placeholder="Ingrédients"
-                            size="10" />
-                        <svg class="arrowDown" onclick="openDropdown('ingredients')" width="16" height="11"
-                            viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="dropdownIngredientsParent">
+                <!--CLOSED-->
+                <div class="dropdownClosed dropdownClosedIngredients">
+                    <div class="dropdownIngredients">
+                        <button type="button" class="buttonIngredients">
+                            <input type="text" class="inputAutocomplete" data-type="ingredient"
+                                data-results="autocompleteIngredients" data-clear="external" placeholder="Ingrédients"
+                                size="10" />
+                            <svg class="arrowDown" onclick="openDropdown('ingredients')" width="16" height="11"
+                                viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                                    fill="white" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="autocompleteIngredients" style="display: none;"></div>
+                <!--INGREDIENTS-->
+                <!--OPEN-->
+                <div class="dropdownOpen dropdownOpenIngredients">
+                    <div class="dropdownIngredients">
+                        <input class="inputIngredients inputAutocomplete" data-type="ingredient"
+                            data-results="allIngredients" data-clear="internal" type="text"
+                            placeholder="Rechercher un ingrédient" />
+                        <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                                d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
                                 fill="white" />
                         </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="autocompleteIngredients" style="display: none;"></div>
-            <!--INGREDIENTS-->
-            <!--OPEN-->
-            <div class="dropdownOpen dropdownOpenIngredients">
-                <div class="dropdownIngredients">
-                    <input class="inputIngredients inputAutocomplete" data-type="ingredient"
-                        data-results="allIngredients" data-clear="internal" type="text"
-                        placeholder="Rechercher un ingrédient" />
-                    <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
-                            fill="white" />
-                    </svg>
-                    <ul class="allIngredients"></ul>
+                        <ul class="allIngredients"></ul>
+                    </div>
                 </div>
             </div>
             <!--APPAREILS-->
-            <!--CLOSED-->
-            <div class="dropdownClosed">
-                <div class="dropdownAppliances">
-                    <button type="button" class="buttonAppliances">
-                        <input type="text" class="inputAutocomplete" data-type="appliance"
-                            data-results="autocompleteAppliances" data-clear="external" placeholder="Appareils"
-                            size="10" />
-                        <svg class="arrowDown" onclick="openDropdown('appliances')" width="16" height="11"
-                            viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="dropdownAppliancesParent">
+                <!--CLOSED-->
+                <div class="dropdownClosed">
+                    <div class="dropdownAppliances">
+                        <button type="button" class="buttonAppliances">
+                            <input type="text" class="inputAutocomplete" data-type="appliance"
+                                data-results="autocompleteAppliances" data-clear="external" placeholder="Appareils"
+                                size="10" />
+                            <svg class="arrowDown" onclick="openDropdown('appliances')" width="16" height="11"
+                                viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                                    fill="white" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="autocompleteAppliances" style="display: none;"></div>
+                <!--APPAREILS-->
+                <!--OPEN-->
+                <div class="dropdownOpen dropdownOpenAppliances">
+                    <div class="dropdownAppliances">
+                        <input type="text" class="inputAutocomplete" data-type="appliance" data-results="allAppliances"
+                            data-clear="internal" placeholder="Rechercher un appareil" />
+                        <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                                d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
                                 fill="white" />
                         </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="autocompleteAppliances" style="display: none;"></div>
-            <!--APPAREILS-->
-            <!--OPEN-->
-            <div class="dropdownOpen dropdownOpenAppliances">
-                <div class="dropdownAppliances">
-                    <input type="text" class="inputAutocomplete" data-type="appliance" data-results="allAppliances"
-                        data-clear="internal" placeholder="Rechercher un appareil" />
-                    <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
-                            fill="white" />
-                    </svg>
-                    <ul class="allAppliances"></ul>
+                        <ul class="allAppliances"></ul>
+                    </div>
                 </div>
             </div>
             <!--USTENSILES-->
-            <!--CLOSED-->
-            <div class="dropdownClosed">
-                <div class="dropdownUstensils">
-                    <button type="button" class="buttonUstensils">
-                        <input class="inputUstensils inputAutocomplete" data-type="ustensil"
-                            data-results="autocompleteUstensils" data-clear="external" type="text"
-                            placeholder="Ustensiles" size="10" />
-                        <svg class="arrowDown" onclick="openDropdown('ustensils')" width="16" height="11"
-                            viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="dropdownUstensilsParent">
+                <!--CLOSED-->
+                <div class="dropdownClosed">
+                    <div class="dropdownUstensils">
+                        <button type="button" class="buttonUstensils">
+                            <input class="inputUstensils inputAutocomplete" data-type="ustensil"
+                                data-results="autocompleteUstensils" data-clear="external" type="text"
+                                placeholder="Ustensiles" size="10" />
+                            <svg class="arrowDown" onclick="openDropdown('ustensils')" width="16" height="11"
+                                viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                                    fill="white" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="autocompleteUstensils" style="display: none;"></div>
+                <!--USTENSILES-->
+                <!--OPEN-->
+                <div class="dropdownOpen dropdownOpenUstensils">
+                    <div class="dropdownUstensils">
+                        <input class="autoComplete inputAutocomplete" data-type="ustensil" data-results="allUstensils"
+                            data-clear="internal" type="text" placeholder="Rechercher un ustensile" />
+                        <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                                d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
                                 fill="white" />
                         </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="autocompleteUstensils" style="display: none;"></div>
-            <!--USTENSILES-->
-            <!--OPEN-->
-            <div class="dropdownOpen dropdownOpenUstensils">
-                <div class="dropdownUstensils">
-                    <input class="autoComplete inputAutocomplete" data-type="ustensil" data-results="allUstensils"
-                        data-clear="internal" type="text" placeholder="Rechercher un ustensile" />
-                    <svg class="arrowUp" onclick="closeDropdown()" width="16" height="11" viewBox="0 0 16 11"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
-                            fill="white" />
-                    </svg>
-                    <ul class="allUstensils"></ul>
+                        <ul class="allUstensils"></ul>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="recipeGrid"></div>
+        <div class="noRecipes">Aucune Recettes Trouvées</div>
     </main>
     <footer></footer>
 </body>
