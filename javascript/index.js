@@ -157,14 +157,14 @@ function openDropdown(type) {
         document.querySelector(".dropdownOpenAppliances").style.display = "block";
         document.querySelector(".dropdownOpenIngredients").style.display = "none";
         document.querySelector(".dropdownOpenUstensils").style.display = "none";
-        document.querySelector(".buttonIngredients").style.width = document.querySelector('.dropdownOpenIngredients').offsetWidth + "px";
+        document.querySelector(".buttonAppliances").style.width = document.querySelector('.dropdownOpenAppliances').offsetWidth + "px";
     }
 
     if (type == "ustensils") {
         document.querySelector(".dropdownOpenUstensils").style.display = "block";
         document.querySelector(".dropdownOpenAppliances").style.display = "none";
         document.querySelector(".dropdownOpenIngredients").style.display = "none";
-        document.querySelector(".buttonIngredients").style.width = document.querySelector('.dropdownOpenIngredients').offsetWidth + "px";
+        document.querySelector(".buttonUstensils").style.width = document.querySelector('.dropdownOpenUstensils').offsetWidth + "px";
     }
 }
 
@@ -172,7 +172,7 @@ function openDropdown(type) {
 function closeDropdown() {
     document.querySelectorAll(".dropdownOpen").forEach(dropdown => {
         dropdown.style.display = "none";
-        
+
         if (window.innerWidth > 980) {
             document.querySelector('.buttonIngredients').style.width = 'auto';
             document.querySelector('.buttonAppliances').style.width = 'auto';
@@ -210,7 +210,7 @@ function autoComplete(search, type) {
     return arrayToFilter.filter((value) => {
         const valueLowerCase = value.toLowerCase()
         const searchLowerCase = search.toLowerCase()
-        console.log(arrayToFilter)
+
         return valueLowerCase.includes(searchLowerCase)
     })
 }
@@ -253,16 +253,6 @@ inputAutocomplete.forEach(el => {
     });
 });
 
-
-/*const inputSearchbar = document.querySelector('.inputSearchbar');
-inputSearchbar.addEventListener('input', searchbarMin3);
-
-function searchbarMin3() {
-    const textInput = inputSearchbar.value;
-    if(textInput.length >= 3)
-    console.log(textInput);
-}*/
-
 const inputSearchbar = document.querySelector('.inputSearchbar');
 inputSearchbar.addEventListener('input', ({
     target
@@ -270,16 +260,15 @@ inputSearchbar.addEventListener('input', ({
     algo();
 })
 
-
-
 function algo() {
 
     // On récupére les tags
     const filtersSelected = document.querySelectorAll(".activeFilter");
-    const filtres = [];
+    const filters = [];
 
+    // FOR EACH
     for (let a = 0; a < filtersSelected.length; a++) {
-        filtres.push({
+        filters.push({
             type: filtersSelected[a].dataset.type,
             text: filtersSelected[a].innerText
         })
@@ -291,32 +280,40 @@ function algo() {
     // Boucle recettes
     const recipesFiltered = [];
 
+    // FOR EACH
     for (let b = 0; b < recipes.length; b++) {
         // Pour chaque recettes
+
+        // FOR EACH
         const ingredient = [];
         for (let d = 0; d < recipes[b].ingredients.length; d++) {
             ingredient.push(recipes[b].ingredients[d].ingredient.toLowerCase())
         }
+
         let recipeHasAppliance = true;
         let recipeHasUstensil = true;
         let recipeHasIngredient = true;
-        if (filtres.length > 0) {
-            for (let c = 0; c < filtres.length; c++) {
+
+        if (filters.length > 0) {
+
+            // FOR EACH - .filter
+
+            for (let c = 0; c < filters.length; c++) {
                 // On vérifie les appareils
-                if (filtres[c].type == 'appliance') {
-                    if (recipes[b].appliance.toLowerCase() != filtres[c].text.toLowerCase()) {
+                if (filters[c].type == 'appliance') {
+                    if (recipes[b].appliance.toLowerCase() != filters[c].text.toLowerCase()) {
                         recipeHasAppliance = false;
                     }
                 }
                 // On vérifie les ustensils
-                if (filtres[c].type == 'ustensil') {
-                    if (!recipes[b].ustensils.includes(filtres[c].text.toLowerCase())) {
+                if (filters[c].type == 'ustensil') {
+                    if (!recipes[b].ustensils.includes(filters[c].text.toLowerCase())) {
                         recipeHasUstensil = false;
                     }
                 }
                 // On vérifie les ingredients
-                if (filtres[c].type == 'ingredient') {
-                    if (!ingredient.includes(filtres[c].text.toLowerCase())) {
+                if (filters[c].type == 'ingredient') {
+                    if (!ingredient.includes(filters[c].text.toLowerCase())) {
                         recipeHasIngredient = false;
                     }
                 }
@@ -325,27 +322,15 @@ function algo() {
 
         // Filtre par le texte
         let recipeHasSearch = true
-        
+
         // Lancer la recherche si plus de 3 caractères
         if (search.length >= 3) {
             if (!recipes[b].name.toLowerCase().includes(search.toLowerCase()) && !recipes[b].description.toLowerCase().includes(search.toLowerCase()) && !ingredient.includes(search.toLowerCase())) {
                 recipeHasSearch = false;
-            
+
 
             }
-
-
-            
         }
-
-        
-
-
-
-        // Si on a tapé plus de 3 caractères
-        // Si le titre de la recette n'inclus pas le texte de la recherche et que la desc n'inclus pas le txt de la recherche et que le tableau des ingredients n'inclus pas le txt de la recherche
-        // Alors recipeHasSearch = false
-
 
         if (recipeHasAppliance && recipeHasUstensil && recipeHasIngredient && recipeHasSearch) {
             recipesFiltered.push(recipes[b])
