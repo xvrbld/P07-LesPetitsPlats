@@ -1,0 +1,465 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Lato&family=Roboto&display=swap");
+body {
+  max-width: 1440px;
+  margin: auto;
+  padding: 20px;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.searchbar .inputSearchbar {
+  background-color: #E7E7E7;
+  border: solid 1px #E7E7E7;
+  border-radius: 5px 0 0 5px;
+  width: 100%;
+  padding: 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+.searchbar .inputSearchbar:focus {
+  outline: none;
+}
+.searchbar .buttonSearchbar {
+  background-color: #E7E7E7;
+  border: solid 1px #E7E7E7;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: auto;
+}
+.filters .activeFilter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  margin-left: 0;
+  color: white;
+  border-radius: 5px;
+  padding: 13px 10px 10px 10px;
+  width: auto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+.filters .activeFilter .closeFilter {
+  margin-top: -2px;
+  margin-left: 15px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+.filters .ingredient {
+  background-color: #3282F7;
+}
+.filters .appliance {
+  background-color: #68D9A4;
+}
+.filters .ustensil {
+  background-color: #ED6454;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: row;
+}
+@media screen and (max-width: 980px) {
+  .dropdown {
+    flex-direction: column;
+  }
+}
+.dropdown .dropdownClosed {
+  display: block;
+}
+.dropdown .dropdownOpen {
+  display: none;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: solid 1px inherit;
+  width: 667px;
+  height: 397px;
+  margin-right: 20px;
+  overflow: auto;
+  overflow-x: hidden;
+  z-index: 1;
+}
+@media screen and (max-width: 1210px) {
+  .dropdown .dropdownOpen {
+    width: 500px;
+  }
+}
+@media screen and (max-width: 980px) {
+  .dropdown .dropdownOpen {
+    margin-right: 0;
+    width: fit-content;
+  }
+}
+.dropdown .dropdownOpen svg {
+  cursor: pointer;
+}
+.dropdown .dropdownOpen input {
+  padding: 20px;
+  width: 75%;
+  background-color: inherit;
+  border: none;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.dropdown .dropdownOpen input::placeholder {
+  opacity: 0.5;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.dropdown .dropdownOpen input:focus {
+  outline: none;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.dropdown .dropdownOpen ul {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+  width: 100%;
+  list-style-type: none;
+  color: white;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  padding: 20px;
+  padding-top: 0;
+  margin: 0;
+}
+.dropdown .dropdownOpen ul li {
+  text-align: left;
+  width: 33%;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 1210px) {
+  .dropdown .dropdownOpen ul li {
+    width: 50%;
+    margin-right: 0px;
+  }
+}
+.dropdown .dropdownOpen ul li:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.dropdown button {
+  padding: 20px;
+  cursor: pointer;
+  margin: 15px 20px;
+  margin-left: 0;
+}
+@media screen and (max-width: 980px) {
+  .dropdown button {
+    margin-top: 0;
+    width: 100%;
+    padding: auto;
+  }
+}
+.dropdown button input {
+  background-color: inherit;
+  border: none;
+  color: white;
+  font-size: 16px;
+  line-height: 22px;
+}
+.dropdown button input::placeholder {
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+.dropdown button input:focus {
+  outline: none;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+}
+.dropdown button input:focus::placeholder {
+  opacity: 0.5;
+}
+.dropdown button svg {
+  margin-left: 28px;
+}
+.dropdown .buttonIngredients {
+  background-color: #3282F7;
+  border: solid 1px #3282F7;
+  border-radius: 5px;
+}
+.dropdown .buttonAppliances {
+  background-color: #68D9A4;
+  border: solid 1px #68D9A4;
+  border-radius: 5px;
+}
+.dropdown .buttonUstensils {
+  background-color: #ED6454;
+  border: solid 1px #ED6454;
+  border-radius: 5px;
+}
+.dropdown .dropdownOpenIngredients {
+  background-color: #3282F7;
+}
+.dropdown .dropdownOpenAppliances {
+  background-color: #68D9A4;
+}
+.dropdown .dropdownOpenUstensils {
+  background-color: #ED6454;
+}
+.dropdown .autocompleteIngredients {
+  position: absolute;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 175px;
+  width: 209px;
+  background-color: #3282F7;
+  top: 70%;
+  color: #FFFFFF;
+  border-radius: 5px;
+  z-index: 2;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .autocompleteIngredients {
+    width: 100%;
+  }
+}
+.dropdown .autocompleteIngredients li {
+  list-style-type: none;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  margin-left: 23px;
+}
+.dropdown .autocompleteIngredients li:hover {
+  text-decoration: underline;
+}
+.dropdown .autocompleteAppliances {
+  position: absolute;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 175px;
+  width: 208px;
+  background-color: #68D9A4;
+  top: 70%;
+  left: 0;
+  color: #FFFFFF;
+  border-radius: 5px;
+  z-index: 2;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .autocompleteAppliances {
+    width: 100%;
+  }
+}
+.dropdown .autocompleteAppliances li {
+  list-style-type: none;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  margin-left: 23px;
+}
+.dropdown .autocompleteAppliances li:hover {
+  text-decoration: underline;
+}
+.dropdown .autocompleteUstensils {
+  position: absolute;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 175px;
+  width: 209px;
+  background-color: #ED6454;
+  top: 70%;
+  color: #FFFFFF;
+  border-radius: 5px;
+  z-index: 2;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .autocompleteUstensils {
+    width: 100%;
+  }
+}
+.dropdown .autocompleteUstensils li {
+  list-style-type: none;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  margin-left: 23px;
+}
+.dropdown .autocompleteUstensils li:hover {
+  text-decoration: underline;
+}
+.dropdown .dropdownIngredientsParent {
+  position: relative;
+}
+.dropdown .dropdownIngredientsParent .dropdownOpenIngredients {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .dropdownIngredientsParent .dropdownOpenIngredients {
+    width: 100%;
+  }
+}
+.dropdown .dropdownAppliancesParent {
+  position: relative;
+}
+.dropdown .dropdownAppliancesParent .dropdownOpenAppliances {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .dropdownAppliancesParent .dropdownOpenAppliances {
+    width: 100%;
+  }
+}
+.dropdown .dropdownUstensilsParent {
+  position: relative;
+}
+.dropdown .dropdownUstensilsParent .dropdownOpenUstensils {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+}
+@media screen and (max-width: 980px) {
+  .dropdown .dropdownUstensilsParent .dropdownOpenUstensils {
+    width: 100%;
+  }
+}
+
+.recipeGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-left: -50px;
+}
+.recipeGrid .recipeCard {
+  width: calc(33.33% - 50px);
+  margin-left: 50px;
+  padding: auto;
+}
+@media screen and (max-width: 1024px) {
+  .recipeGrid .recipeCard {
+    width: calc(50% - 50px);
+  }
+}
+@media screen and (max-width: 768px) {
+  .recipeGrid .recipeCard {
+    width: calc(100% - 50px);
+  }
+}
+.recipeGrid .recipeCard .recipeImg {
+  background-color: #C7BEBE;
+  height: 178px;
+  border: solid 1px #C7BEBE;
+  border-radius: 5px 5px 0 0;
+}
+.recipeGrid .recipeCard .recipeContent {
+  background-color: #E7E7E7;
+  border: solid 1px #E7E7E7;
+  border-radius: 0 0 5px 5px;
+  height: 186px;
+  margin-bottom: 50px;
+  padding: 10px 20px;
+}
+.recipeGrid .recipeCard .recipeContent .recipeHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.recipeGrid .recipeCard .recipeContent .recipeHeader h2 {
+  margin: 0;
+  max-width: 280px;
+  height: 58px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.recipeGrid .recipeCard .recipeContent .recipeHeader .recipeTime {
+  display: flex;
+  flex-direction: row;
+}
+.recipeGrid .recipeCard .recipeContent .recipeHeader .recipeTime h3 {
+  margin-top: 0;
+  margin-left: 10px;
+}
+.recipeGrid .recipeCard .recipeContent .recipeText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100px;
+  overflow: auto;
+}
+.recipeGrid .recipeCard .recipeContent .recipeText .recipeIngredients {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  width: 50%;
+  margin-top: 10px;
+  display: flex;
+}
+.recipeGrid .recipeCard .recipeContent .recipeText .recipeIngredients dt {
+  float: left;
+  clear: left;
+  width: 50%;
+  padding: 5px 5px 5px 0;
+}
+.recipeGrid .recipeCard .recipeContent .recipeText .recipeIngredients dt::after {
+  content: ":";
+}
+.recipeGrid .recipeCard .recipeContent .recipeText .recipeIngredients dd {
+  width: 33%;
+  font-weight: 400;
+  display: flex;
+  padding: 5px 0 5px 0;
+}
+.recipeGrid .recipeCard .recipeContent .recipeText .recipeInstructions {
+  margin-top: 10px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  width: 50%;
+}
+
+.noRecipes {
+  margin-top: 100px;
+  justify-content: center;
+  font-size: 36px;
+  color: #D04F4F;
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=css.main.map */

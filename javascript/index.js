@@ -267,12 +267,9 @@ function algo() {
     const filters = [];
 
     // FOR EACH
-    for (let a = 0; a < filtersSelected.length; a++) {
-        filters.push({
-            type: filtersSelected[a].dataset.type,
-            text: filtersSelected[a].innerText
-        })
-    }
+    filtersSelected.forEach((filterSelected) => {
+        filters.push(filterSelected);
+    })
 
     // On récupére le champ de recherche
     const search = document.querySelector('.inputSearchbar').value;
@@ -281,14 +278,26 @@ function algo() {
     const recipesFiltered = [];
 
     // FOR EACH
-    for (let b = 0; b < recipes.length; b++) {
+
+    recipes.forEach((recipe) => {
+
+    
+
+    //for (let b = 0; b < recipes.length; b++) {
+
         // Pour chaque recettes
 
         // FOR EACH
         const ingredient = [];
-        for (let d = 0; d < recipes[b].ingredients.length; d++) {
+
+        recipe.ingredients.forEach((recipeIngredient) => {
+            recipe.ingredients.push(recipeIngredient);
+            
+        })
+
+        /*for (let d = 0; d < recipes[b].ingredients.length; d++) {
             ingredient.push(recipes[b].ingredients[d].ingredient.toLowerCase())
-        }
+        }*/
 
         let recipeHasAppliance = true;
         let recipeHasUstensil = true;
@@ -298,7 +307,32 @@ function algo() {
 
             // FOR EACH - .filter
 
-            for (let c = 0; c < filters.length; c++) {
+            filters.forEach((filter) => {
+                
+                // On vérifie les appareils
+                if (filter.type == 'appliance') {
+                    if (recipe.appliance.toLowerCase() != filter.text.toLowerCase()) {
+                        recipeHasAppliance = false;
+                    }
+                }
+
+                // On vérifie les ustensils
+                if (filter.type == 'ustensil') {
+                    if (!recipe.ustensils.includes(filter.text.toLowerCase())) {
+                        recipeHasUstensil = false;
+                    }
+                }
+
+                // On vérifie les ingredients
+                if (filter.type == 'ingredient') {
+                    if (!ingredient.includes(filter.text.toLowerCase())) {
+                        recipeHasIngredient = false;
+                    }
+                }
+
+            })
+
+            /*for (let c = 0; c < filters.length; c++) {
                 // On vérifie les appareils
                 if (filters[c].type == 'appliance') {
                     if (recipes[b].appliance.toLowerCase() != filters[c].text.toLowerCase()) {
@@ -317,7 +351,7 @@ function algo() {
                         recipeHasIngredient = false;
                     }
                 }
-            }
+            }*/
         }
 
         // Filtre par le texte
@@ -325,17 +359,15 @@ function algo() {
 
         // Lancer la recherche si plus de 3 caractères
         if (search.length >= 3) {
-            if (!recipes[b].name.toLowerCase().includes(search.toLowerCase()) && !recipes[b].description.toLowerCase().includes(search.toLowerCase()) && !ingredient.includes(search.toLowerCase())) {
+            if (!recipe.name.toLowerCase().includes(search.toLowerCase()) && !recipe.description.toLowerCase().includes(search.toLowerCase()) && !ingredient.includes(search.toLowerCase())) {
                 recipeHasSearch = false;
-
-
             }
         }
 
         if (recipeHasAppliance && recipeHasUstensil && recipeHasIngredient && recipeHasSearch) {
-            recipesFiltered.push(recipes[b])
+            recipesFiltered.push(recipe)
         }
-    }
+    })
 
     // Si le nombre de recettes = 0 écrire message rien de trouvé sinon displayRecipes
 
