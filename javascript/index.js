@@ -271,7 +271,7 @@ function algo() {
         filters.push({
             type: filtersSelected[a].dataset.type,
             text: filtersSelected[a].innerText
-        })
+        });
     }
 
     // On récupére le champ de recherche
@@ -287,7 +287,7 @@ function algo() {
         // FOR EACH
         const ingredient = [];
         for (let d = 0; d < recipes[b].ingredients.length; d++) {
-            ingredient.push(recipes[b].ingredients[d].ingredient.toLowerCase())
+            ingredient.push(recipes[b].ingredients[d].ingredient.toLowerCase());
         }
 
         let recipeHasAppliance = true;
@@ -321,7 +321,7 @@ function algo() {
         }
 
         // Filtre par le texte
-        let recipeHasSearch = true
+        let recipeHasSearch = true;
 
         // Lancer la recherche si plus de 3 caractères
         if (search.length >= 3) {
@@ -333,7 +333,7 @@ function algo() {
         }
 
         if (recipeHasAppliance && recipeHasUstensil && recipeHasIngredient && recipeHasSearch) {
-            recipesFiltered.push(recipes[b])
+            recipesFiltered.push(recipes[b]);
         }
     }
 
