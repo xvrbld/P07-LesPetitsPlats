@@ -58,6 +58,7 @@ function displayRecipes(recipes) {
 }
 
 // Ajouter un tag/filtre
+// eslint-disable-next-line
 function addTag(tag, type) {
 
     const filters = document.querySelector(".filters");
@@ -139,11 +140,14 @@ function fillDropdowns(recipes) {
 
 // Initialise les fonctions de remplissage
 function init() {
+    /*eslint-disable */
     displayRecipes(recipes);
     fillDropdowns(recipes);
+    /*eslint-enable */
 }
 
 // Ouvrir les dropdowns
+// eslint-disable-next-line
 function openDropdown(type) {
     closeDropdown();
     if (type == "ingredients") {
@@ -186,6 +190,7 @@ function closeDropdown() {
 }
 
 // Supprime les filtres un à un
+// eslint-disable-next-line
 function closeFilter(el) {
     el.parentNode.remove();
     algo();
@@ -247,6 +252,7 @@ inputAutocomplete.forEach(el => {
             }
 
             if (clear == 'internal') {
+                // eslint-disable-next-line
                 fillDropdowns(recipes);
             }
         }
@@ -255,6 +261,7 @@ inputAutocomplete.forEach(el => {
 
 const inputSearchbar = document.querySelector('.inputSearchbar');
 inputSearchbar.addEventListener('input', ({
+    // eslint-disable-next-line
     target
 }) => {
     algo();
@@ -280,7 +287,7 @@ function algo() {
     const recipesFiltered = [];
   
     // FOR EACH
-  
+    // eslint-disable-next-line
     recipes.forEach((recipe) => {
       // Pour chaque recettes
   
@@ -379,5 +386,3 @@ function algo() {
   }
 
 init();
-
-//test

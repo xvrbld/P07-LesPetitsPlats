@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 var recipes = [
     {
         "id": 1,
