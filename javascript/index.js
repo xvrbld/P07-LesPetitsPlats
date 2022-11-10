@@ -58,6 +58,7 @@ function displayRecipes(recipes) {
 }
 
 // Ajouter un tag/filtre
+// eslint-disable-next-line
 function addTag(tag, type) {
 
     const filters = document.querySelector(".filters");
@@ -139,11 +140,14 @@ function fillDropdowns(recipes) {
 
 // Initialise les fonctions de remplissage
 function init() {
+    /*eslint-disable */
     displayRecipes(recipes);
     fillDropdowns(recipes);
+    /*eslint-enable */
 }
 
 // Ouvrir les dropdowns
+// eslint-disable-next-line
 function openDropdown(type) {
     closeDropdown();
     if (type == "ingredients") {
@@ -186,6 +190,7 @@ function closeDropdown() {
 }
 
 // Supprime les filtres un à un
+// eslint-disable-next-line
 function closeFilter(el) {
     el.parentNode.remove();
     algo();
@@ -247,6 +252,7 @@ inputAutocomplete.forEach(el => {
             }
 
             if (clear == 'internal') {
+                // eslint-disable-next-line
                 fillDropdowns(recipes);
             }
         }
@@ -255,6 +261,7 @@ inputAutocomplete.forEach(el => {
 
 const inputSearchbar = document.querySelector('.inputSearchbar');
 inputSearchbar.addEventListener('input', ({
+    // eslint-disable-next-line
     target
 }) => {
     algo();
@@ -281,13 +288,16 @@ function algo() {
     const recipesFiltered = [];
 
     // FOR EACH
+    // eslint-disable-next-line
     for (let b = 0; b < recipes.length; b++) {
         // Pour chaque recettes
 
         // FOR EACH
         const ingredient = [];
+        /*eslint-disable */
         for (let d = 0; d < recipes[b].ingredients.length; d++) {
             ingredient.push(recipes[b].ingredients[d].ingredient.toLowerCase());
+            /*eslint-enable */
         }
 
         let recipeHasAppliance = true;
@@ -301,12 +311,14 @@ function algo() {
             for (let c = 0; c < filters.length; c++) {
                 // On vérifie les appareils
                 if (filters[c].type == 'appliance') {
+                    // eslint-disable-next-line
                     if (recipes[b].appliance.toLowerCase() != filters[c].text.toLowerCase()) {
                         recipeHasAppliance = false;
                     }
                 }
                 // On vérifie les ustensils
                 if (filters[c].type == 'ustensil') {
+                    // eslint-disable-next-line
                     if (!recipes[b].ustensils.includes(filters[c].text.toLowerCase())) {
                         recipeHasUstensil = false;
                     }
@@ -325,6 +337,7 @@ function algo() {
 
         // Lancer la recherche si plus de 3 caractères
         if (search.length >= 3) {
+            // eslint-disable-next-line
             if (!recipes[b].name.toLowerCase().includes(search.toLowerCase()) && !recipes[b].description.toLowerCase().includes(search.toLowerCase()) && !ingredient.includes(search.toLowerCase())) {
                 recipeHasSearch = false;
 
@@ -333,6 +346,7 @@ function algo() {
         }
 
         if (recipeHasAppliance && recipeHasUstensil && recipeHasIngredient && recipeHasSearch) {
+            // eslint-disable-next-line
             recipesFiltered.push(recipes[b]);
         }
     }
