@@ -272,7 +272,6 @@ function algo() {
     const filtersSelected = document.querySelectorAll(".activeFilter");
     const filters = [];
   
-    // FOR EACH
     filtersSelected.forEach((filterSelected) => {
       filters.push({
         type: filterSelected.dataset.type,
@@ -286,12 +285,10 @@ function algo() {
     // Boucle recettes
     const recipesFiltered = [];
   
-    // FOR EACH
     // eslint-disable-next-line
     recipes.forEach((recipe) => {
       // Pour chaque recettes
   
-      // FOR EACH
       const ingredient = [];
       recipe.ingredients.forEach((recipeIngredient) => {
         ingredient.push(recipeIngredient.ingredient.toLowerCase());
@@ -302,7 +299,7 @@ function algo() {
       let recipeHasIngredient = true;
   
       if (filters.length > 0) {
-        // FOR EACH - .filter
+
         const filtersIngredients = filters.filter(
           (tag) => tag.type === "ingredient"
         );
